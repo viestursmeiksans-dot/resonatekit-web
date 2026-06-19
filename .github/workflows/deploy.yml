@@ -1,0 +1,28 @@
+# Publish resonatekit.com to Cloudflare Pages via Direct Upload on every push to main.
+# The Pages project is NOT git-connected, so this consumes ZERO Pages build quota — the
+# "build" runs on GitHub Actions minutes. This is also the deploy trigger for the labojumi
+# edit-by-message system: it commits here, this Action publishes.
+name: deploy
+
+on:
+  push:
+    branches: [main]
+
+concurrency:
+  group: pages-deploy        # collapse rapid commits into one in-flight deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Publish to Cloudflare Pages (Direct Upload)
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}   # repo secret: Pages:Edit token
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }} # repo secret
+          # Static site lives at repo root (index.html, blog/, corporate-training/).
+          command: pages deploy . --project-name=resonatekit --branch=main

@@ -680,7 +680,7 @@
         </button>
         <div class="grid md:grid-cols-2 gap-8 md:gap-10 items-start">
           <div class="aspect-[4/5] rounded-2xl overflow-hidden bg-neutral-100 order-1 md:order-2">
-            <img loading="lazy" decoding="async" src="/images/labot-1782123399010-410408.webp" onerror="this.onerror=null;this.src='https://placehold.co/800x1000/f5f0eb/3d2d5e?text=Viesturs+Meik%C5%A1%C4%81ns'" class="w-full h-full object-cover object-center" alt="Viesturs Meikšāns" />
+            <img loading="lazy" decoding="async" src="/images/labot-1782121600781-45597.png" onerror="this.onerror=null;this.src='https://placehold.co/800x1000/f5f0eb/3d2d5e?text=Viesturs+Meik%C5%A1%C4%81ns'" class="w-full h-full object-cover object-center" alt="Viesturs Meikšāns" />
           </div>
           <div class="order-2 md:order-1">
             <p class="text-xs font-semibold tracking-widest uppercase text-neutral-500 mb-3">Public speaking skills — 1:1 coaching</p>
@@ -854,30 +854,6 @@
     </div>
   </section>
 
-  <!-- ══════════════════════ ASK A QUESTION ══════════════════════ -->
-  <section class="bg-white px-6 md:px-10 py-12 md:py-16 border-b border-neutral-200">
-    <div class="max-w-3xl mx-auto text-center">
-      <p class="text-[11px] font-semibold tracking-widest uppercase text-neutral-500 mb-3">Ask your question</p>
-      <h2 class="font-serif text-2xl md:text-3xl leading-tight text-neutral-900 mb-6">
-        We reply <em class="text-neutral-600">within 24 hours</em>
-      </h2>
-
-      <form id="ask-form" class="flex flex-col md:flex-row items-stretch gap-2 max-w-2xl mx-auto" novalidate>
-        <input id="ask-email" type="email" required placeholder="Your email address"
-          class="md:w-56 shrink-0 border border-neutral-300 rounded-xl px-4 py-3 text-sm text-black placeholder-neutral-400 bg-white focus:outline-none focus:ring-2 focus:ring-black transition" />
-        <input id="ask-question" type="text" required placeholder="Ask your question…"
-          class="flex-1 border border-neutral-300 rounded-xl px-4 py-3 text-sm text-black placeholder-neutral-400 bg-white focus:outline-none focus:ring-2 focus:ring-black transition" />
-        <button id="ask-submit" type="submit"
-          class="shrink-0 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-black text-white text-sm font-semibold tracking-widest uppercase hover:bg-neutral-800 transition-colors">
-          Send
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
-        </button>
-      </form>
-      <p id="ask-error" class="hidden mt-3 text-sm text-red-500"></p>
-      <p id="ask-success" class="hidden mt-4 text-sm text-neutral-600">Thank you! We'll send our reply to your email.</p>
-    </div>
-  </section>
-
   <!-- ══════════════════════ QUOTE SUMMARY (hidden initially) ══════════════════════ -->
   <section id="quote-summary" class="hidden bg-white px-8 md:px-12 py-20 border-t border-neutral-100">
     <div class="max-w-3xl mx-auto">
@@ -1020,6 +996,30 @@
         </div>
 
       </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ ASK A QUESTION ══════════════════════ -->
+  <section class="bg-white px-6 md:px-10 py-12 md:py-16 border-b border-neutral-200">
+    <div class="max-w-3xl mx-auto text-center">
+      <p class="text-[11px] font-semibold tracking-widest uppercase text-neutral-500 mb-3">Ask your question</p>
+      <h2 class="font-serif text-2xl md:text-3xl leading-tight text-neutral-900 mb-6">
+        We reply <em class="text-neutral-600">within 24 hours</em>
+      </h2>
+
+      <form id="ask-form" class="flex flex-col md:flex-row items-stretch gap-2 max-w-2xl mx-auto" novalidate>
+        <input id="ask-email" type="email" required placeholder="Your email address"
+          class="md:w-56 shrink-0 border border-neutral-300 rounded-xl px-4 py-3 text-sm text-black placeholder-neutral-400 bg-white focus:outline-none focus:ring-2 focus:ring-black transition" />
+        <input id="ask-question" type="text" required placeholder="Ask your question…"
+          class="flex-1 border border-neutral-300 rounded-xl px-4 py-3 text-sm text-black placeholder-neutral-400 bg-white focus:outline-none focus:ring-2 focus:ring-black transition" />
+        <button id="ask-submit" type="submit"
+          class="shrink-0 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-black text-white text-sm font-semibold tracking-widest uppercase hover:bg-neutral-800 transition-colors">
+          Send
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+        </button>
+      </form>
+      <p id="ask-error" class="hidden mt-3 text-sm text-red-500"></p>
+      <p id="ask-success" class="hidden mt-4 text-sm text-neutral-600">Thank you! We'll send our reply to your email.</p>
     </div>
   </section>
 

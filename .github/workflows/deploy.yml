@@ -19,10 +19,15 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      # Build the Eleventy site: src/ -> _site/  (output is what Pages serves now).
+      - run: npm ci && npx @11ty/eleventy
       - name: Publish to Cloudflare Pages (Direct Upload)
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}   # repo secret: Pages:Edit token
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }} # repo secret
-          # Static site lives at repo root (index.html, blog/, corporate-training/).
-          command: pages deploy . --project-name=resonatekit --branch=main
+          # Eleventy output dir (was repo root in the flat-HTML v1).
+          command: pages deploy _site/ --project-name=resonatekit --branch=main

@@ -1,0 +1,37 @@
+---
+layout: base.njk
+---
+<main class="bg-[#f5f0eb] pb-4 pt-16">
+  <article class="max-w-2xl mx-auto px-6 pt-12 md:pt-16">
+    <nav class="text-[11px] font-semibold tracking-widest uppercase text-neutral-400 mb-6" aria-label="Breadcrumb">
+      <a href="/" class="hover:text-neutral-700">Home</a><span class="mx-2">/</span><a href="/blog/" class="hover:text-neutral-700">Blog</a>
+    </nav>
+    <p class="text-[11px] font-semibold tracking-widest uppercase text-[#3d2d5e] mb-4">{{ post.category }}</p>
+    <h1 class="font-serif text-4xl md:text-5xl leading-tight text-neutral-900 mb-5">{{ post.title }}</h1>
+    <div class="flex items-center gap-3 text-sm text-neutral-500 mb-8">
+      <span>By <a href="/#lektors" class="text-neutral-700 hover:text-neutral-900 underline underline-offset-2">Viesturs Meikšāns</a></span><span aria-hidden="true">·</span><span>{{ post.readTime }}</span>
+    </div>
+    <div class="rounded-2xl overflow-hidden bg-neutral-100 mb-10 aspect-[16/9]">
+      <img loading="lazy" decoding="async" src="{{ post.thumbnail }}" class="w-full h-full object-cover" alt="{{ post.alt }}" />
+    </div>
+
+    <div class="article">
+      {{ content | safe }}
+    </div>
+
+    <div class="mt-12 rounded-3xl border border-neutral-200 bg-white p-7 md:p-9">
+      <p class="text-xs font-semibold tracking-widest uppercase text-[#3d2d5e] mb-3">Work on it 1:1</p>
+      <h3 class="font-serif text-2xl md:text-3xl text-neutral-900 leading-tight mb-3">Speak without the nerves</h3>
+      <p class="text-neutral-600 text-sm leading-relaxed mb-6 max-w-xl">Stage fright is overcome by speaking in a safe, controlled setting with precise, kind feedback. Director Viesturs Meikšāns helps you find the root of your fear and the techniques that fit you — online or in person.</p>
+      <div class="flex flex-wrap gap-3">
+        <a href="/#izveles" class="inline-flex items-center justify-center px-6 py-3 rounded-xl border border-black text-black text-xs font-bold tracking-widest uppercase hover:bg-[#E07B6A] hover:text-white transition-colors" style="background:#8AE14A;">Explore coaching</a>
+        <a href="mailto:hello@resonatekit.com" class="inline-flex items-center justify-center px-6 py-3 rounded-xl border border-neutral-300 text-neutral-800 text-xs font-bold tracking-widest uppercase hover:border-neutral-900 transition-colors">Get in touch</a>
+      </div>
+    </div>
+    <div class="mt-10 pt-8 border-t border-neutral-200">
+      <a href="/blog/" class="inline-flex items-center gap-2 text-sm font-semibold text-neutral-700 hover:text-neutral-900 transition-colors">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" /></svg> All articles
+      </a>
+    </div>
+  </article>
+</main>

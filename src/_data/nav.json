@@ -1,0 +1,9 @@
+[
+  { "label": "Programs", "url": "/#izveles" },
+  { "label": "For Companies", "url": "/corporate-training/" },
+  { "label": "Blog", "url": "/blog/" },
+  { "label": "Coach", "url": "/#lektors" },
+  { "label": "Reviews", "url": "/#testimonials" },
+  { "label": "FAQ", "url": "/#faq" },
+  { "label": "Contact", "url": "/#kontakti", "modal": "kontakti" }
+]

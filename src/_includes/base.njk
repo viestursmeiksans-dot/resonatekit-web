@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <title>{% if title %}{{ title }} | {{ site.name }}{% else %}{{ site.name }}{% endif %}</title>
+  <meta name="description" content="{{ description }}" />
+  <meta name="author" content="Viesturs Meikšāns" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}" />
+  {%- set ogImg = ogImage if ogImage else "https://cdn.shopify.com/s/files/1/0303/7134/8525/files/hero-2.png?width=1200" %}
+  <meta property="og:type" content="article" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="{{ site.name }}" />
+  <meta property="og:title" content="{{ title }}" />
+  <meta property="og:description" content="{{ description }}" />
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
+  <meta property="og:image" content="{{ ogImg }}" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{{ title }}" />
+  <meta name="twitter:description" content="{{ description }}" />
+  <meta name="twitter:image" content="{{ ogImg }}" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { theme: { extend: { fontFamily: { serif: ['DM Serif Display', 'Georgia', 'serif'], sans: ['Inter', 'ui-sans-serif', 'system-ui'] } } } }</script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { overflow-x: hidden; scroll-behavior: smooth; }
+    body { -webkit-font-smoothing: antialiased; margin: 0; background: #f5f0eb; }
+    img { filter: brightness(1.12); }
+    .article { color: #44403c; }
+    .article p { font-size: 1.0625rem; line-height: 1.75; margin: 0 0 1.4rem; }
+    .article h2 { font-family: 'DM Serif Display', Georgia, serif; color: #1c1917; font-size: 1.75rem; line-height: 1.25; margin: 2.75rem 0 1rem; letter-spacing: -0.01em; }
+    .article h3 { font-family: 'DM Serif Display', Georgia, serif; color: #1c1917; font-size: 1.3rem; margin: 2rem 0 0.75rem; }
+    .article ul, .article ol { margin: 0 0 1.4rem; padding-left: 1.3rem; }
+    .article li { font-size: 1.0625rem; line-height: 1.7; margin-bottom: 0.5rem; }
+    .article ol { list-style: decimal; } .article ul { list-style: disc; }
+    .article strong { color: #1c1917; font-weight: 600; }
+    .article a { color: #3d2d5e; text-decoration: underline; text-underline-offset: 2px; }
+    .article a:hover { text-decoration: none; }
+    .article .lead { font-size: 1.2rem; line-height: 1.7; color: #292524; }
+    @media (min-width: 768px) { .article h2 { font-size: 2.1rem; } }
+  </style>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PML971EG2W"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-PML971EG2W');</script>
+  <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','2099771323910607');fbq('track','PageView');</script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2099771323910607&ev=PageView&noscript=1" /></noscript>
+  {{ extrahead | safe }}
+</head>
+
+<body class="font-sans text-neutral-900">
+  {% include "nav.njk" %}
+  {{ content | safe }}
+  {% include "footer.njk" %}
+</body>
+</html>

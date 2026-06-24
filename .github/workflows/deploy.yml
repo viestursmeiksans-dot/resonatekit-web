@@ -6,7 +6,7 @@ name: deploy
 
 on:
   push:
-    branches: [main]
+    branches: [main, eleventy-conversion]
 
 concurrency:
   group: pages-deploy        # collapse rapid commits into one in-flight deploy
@@ -30,4 +30,6 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}   # repo secret: Pages:Edit token
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }} # repo secret
           # Eleventy output dir (was repo root in the flat-HTML v1).
-          command: pages deploy _site/ --project-name=resonatekit --branch=main
+          # --branch = the git branch: "main" publishes PRODUCTION; any other branch
+          # (e.g. eleventy-conversion) becomes a Cloudflare Pages PREVIEW deployment with its own URL.
+          command: pages deploy _site/ --project-name=resonatekit --branch=${{ github.ref_name }}

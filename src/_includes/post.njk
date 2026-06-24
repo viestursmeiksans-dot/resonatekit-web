@@ -12,7 +12,7 @@ layout: base.njk
       <span>By <a href="/#lektors" class="text-neutral-700 hover:text-neutral-900 underline underline-offset-2">Viesturs Meikšāns</a></span><span aria-hidden="true">·</span><span>{{ post.readTime }}</span>
     </div>
     <div class="rounded-2xl overflow-hidden bg-neutral-100 mb-10 aspect-[16/9]">
-      <img loading="lazy" decoding="async" src="{{ post.thumbnail }}" class="w-full h-full object-cover" alt="{{ post.alt }}" />
+      <img loading="lazy" decoding="async" src="{{ post.thumbnail }}" onerror="this.onerror=null;this.src='https://placehold.co/1280x720/f5f0eb/3d2d5e?text={{ post.category | urlencode }}'" class="w-full h-full object-cover" alt="{{ post.alt }}" />
     </div>
 
     <div class="article">

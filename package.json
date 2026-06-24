@@ -1,0 +1,13 @@
+{
+  "name": "resonatekit-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "resonatekit.com — Eleventy static site (labot.lv structured-source architecture)",
+  "scripts": {
+    "build": "eleventy",
+    "serve": "eleventy --serve"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}

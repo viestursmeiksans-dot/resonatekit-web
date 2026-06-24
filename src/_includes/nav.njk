@@ -1,0 +1,21 @@
+{#- THE nav — defined once. Edit src/_data/nav.json to change menu items. -#}
+{%- set onHome = page.url == "/" -%}
+<nav class="fixed top-0 inset-x-0 z-50 flex items-center justify-between px-4 md:px-12 h-16 bg-white border-b border-neutral-100">
+  <a href="/" class="font-serif text-xl md:text-2xl font-normal tracking-tight text-neutral-900">{{ site.name }}</a>
+
+  <div class="hidden md:flex items-center gap-10 text-[11px] font-semibold tracking-widest text-neutral-700 uppercase">
+    {%- for item in nav %}
+    {%- if item.modal == "kontakti" and onHome %}
+    <a href="#" data-kontakti-open class="hover:text-neutral-900 transition-colors">{{ item.label }}</a>
+    {%- else %}
+    <a href="{{ item.url }}" class="hover:text-neutral-900 transition-colors">{{ item.label }}</a>
+    {%- endif %}
+    {%- endfor %}
+  </div>
+
+  {%- if onHome %}
+  <a href="#" data-kontakti-open class="inline-flex items-center gap-2 bg-neutral-900 text-white text-[11px] font-bold tracking-widest uppercase px-5 py-2.5 rounded-full hover:bg-neutral-700 transition-colors">Get in touch</a>
+  {%- else %}
+  <a href="/#kontakti" class="inline-flex items-center gap-2 bg-neutral-900 text-white text-[11px] font-bold tracking-widest uppercase px-5 py-2.5 rounded-full hover:bg-neutral-700 transition-colors">Get in touch</a>
+  {%- endif %}
+</nav>

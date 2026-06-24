@@ -1,0 +1,46 @@
+{#- THE footer — defined once. -#}
+{%- set onHome = page.url == "/" -%}
+<footer id="kontakti" class="bg-neutral-950 border-t border-white/5 px-6 md:px-12 pt-14 pb-8">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mb-12">
+      <div>
+        <span class="font-serif text-white text-2xl block mb-3">{{ site.name }}</span>
+        <p class="text-xs text-neutral-500 leading-relaxed">{{ site.tagline }}</p>
+      </div>
+
+      <div>
+        <p class="text-[11px] font-bold tracking-widest uppercase text-white/80 mb-4">Information</p>
+        <ul class="space-y-2 text-sm text-neutral-400">
+          {%- if onHome %}
+          <li><button type="button" data-policy="privacy" class="text-left hover:text-white transition-colors">Privacy Policy</button></li>
+          <li><button type="button" data-policy="refund" class="text-left hover:text-white transition-colors">Terms &amp; Conditions</button></li>
+          <li><button type="button" data-policy="legal" class="text-left hover:text-white transition-colors">Intellectual Property</button></li>
+          {%- else %}
+          <li><a href="/#kontakti" class="hover:text-white transition-colors">Privacy Policy</a></li>
+          <li><a href="/#kontakti" class="hover:text-white transition-colors">Terms &amp; Conditions</a></li>
+          <li><a href="/#kontakti" class="hover:text-white transition-colors">Intellectual Property</a></li>
+          {%- endif %}
+        </ul>
+      </div>
+
+      <div>
+        <p class="text-[11px] font-bold tracking-widest uppercase text-white/80 mb-4">Get in touch</p>
+        <ul class="space-y-2 text-sm text-neutral-400">
+          <li><a href="mailto:{{ site.email }}" class="hover:text-white transition-colors">{{ site.email }}</a></li>
+          <li><a href="tel:{{ site.phoneHref }}" class="hover:text-white transition-colors">{{ site.phone }}</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pt-6 border-t border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 text-xs text-neutral-500">
+      <div>
+        <span class="text-neutral-300">{{ site.name }}</span>
+        <span class="mx-2">·</span>
+        <span>{{ site.legal }}</span>
+      </div>
+      <span>© {{ site.year }} {{ site.name }}. All rights reserved.</span>
+    </div>
+
+  </div>
+</footer>

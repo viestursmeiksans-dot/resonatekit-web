@@ -13,9 +13,28 @@
     {%- endfor %}
   </div>
 
-  {%- if onHome %}
-  <a href="#" data-kontakti-open class="inline-flex items-center gap-2 bg-neutral-900 text-white text-[11px] font-bold tracking-widest uppercase px-5 py-2.5 rounded-full hover:bg-neutral-700 transition-colors">Get in touch</a>
-  {%- else %}
-  <a href="/#kontakti" class="inline-flex items-center gap-2 bg-neutral-900 text-white text-[11px] font-bold tracking-widest uppercase px-5 py-2.5 rounded-full hover:bg-neutral-700 transition-colors">Get in touch</a>
-  {%- endif %}
+  <div class="flex items-center gap-2">
+    {%- if onHome %}
+    <a href="#" data-kontakti-open class="inline-flex items-center gap-2 bg-neutral-900 text-white text-[11px] font-bold tracking-widest uppercase px-5 py-2.5 rounded-full hover:bg-neutral-700 transition-colors">Get in touch</a>
+    {%- else %}
+    <a href="/#kontakti" class="inline-flex items-center gap-2 bg-neutral-900 text-white text-[11px] font-bold tracking-widest uppercase px-5 py-2.5 rounded-full hover:bg-neutral-700 transition-colors">Get in touch</a>
+    {%- endif %}
+
+    <!-- Mobile hamburger -->
+    <button type="button" id="mobile-menu-btn" data-cta="Menu (hamburger)" aria-label="Menu" aria-expanded="false"
+      onclick="(function(b){var m=document.getElementById('mobile-menu');var o=m.style.display==='block';m.style.display=o?'none':'block';b.setAttribute('aria-expanded',o?'false':'true');})(this)"
+      class="md:hidden inline-flex items-center justify-center w-10 h-10 -mr-1 text-neutral-900 active:bg-neutral-100 rounded-lg">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5" /></svg>
+    </button>
+  </div>
 </nav>
+
+<!-- Mobile menu panel -->
+<div id="mobile-menu" style="display:none"
+  class="md:hidden fixed top-16 inset-x-0 z-[60] bg-white border-b border-neutral-100 shadow-soft">
+  <div class="flex flex-col px-4 text-[13px] font-semibold tracking-widest uppercase text-neutral-700">
+    {%- for item in nav %}
+    <a href="{{ item.url }}" onclick="document.getElementById('mobile-menu').style.display='none'" class="py-3.5 border-b border-neutral-100 last:border-0 active:text-neutral-900">{{ item.label }}</a>
+    {%- endfor %}
+  </div>
+</div>

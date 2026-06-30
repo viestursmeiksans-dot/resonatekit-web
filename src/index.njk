@@ -1268,7 +1268,7 @@
           var email=document.getElementById('nl-email').value.trim(); if(!email)return;
           var b=document.getElementById('nl-submit'); b.disabled=true; b.textContent='\u2026';
           var w=window.RK_WEB3||{};
-          fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({access_key:w.key,subject:'Newsletter signup',from_name:'ResonateKit newsletter',email:email,cc:w.cc})})
+          fetch('https://api.convertkit.com/v3/tags/20775570/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({api_key:'Bp1cwQaza5hZVvnZrHb8XQ',email:email})})
             .then(function(){document.getElementById('nl-ok').classList.remove('hidden'); f.reset(); if(window.gtag)gtag('event','generate_lead',{lead_type:'newsletter'}); if(window.fbq)fbq('track','Lead',{content_name:'newsletter'});})
             .finally(function(){b.disabled=false; b.textContent='Get the tips';});
         });

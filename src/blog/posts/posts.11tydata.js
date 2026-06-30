@@ -19,6 +19,14 @@ module.exports = {
   eleventyComputed: {
     // Full post record, so post.njk can read category/thumbnail/readTime/alt/title.
     post: (data) => findPost(data),
+    // Related posts: same category first, then fill to 4 (internal linking).
+    related: (data) => {
+      const p = findPost(data);
+      const others = posts.filter((x) => x.slug !== p.slug);
+      const sameCat = others.filter((x) => x.category === p.category);
+      const fill = others.filter((x) => x.category !== p.category);
+      return [...sameCat, ...fill].slice(0, 4);
+    },
     // SEO: front-matter wins, else fall back to the posts.json record.
     title: (data) => data.title || findPost(data).title || "",
     description: (data) => data.description || findPost(data).description || "",

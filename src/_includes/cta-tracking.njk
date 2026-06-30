@@ -1,0 +1,31 @@
+  <!-- ══════════════════════ PER-BUTTON CLICK TRACKING (GA4 cta_click) ══════════════════════ -->
+  <!-- Fires cta_click on every link/button/checkbox with text + location + destination + scroll depth.
+       Feeds the "Resonate Clicks" analysis tab. Needs GA4 custom dimensions registered on prop 541724382:
+       cta_text, cta_location, link_url, scroll_pct (event-scoped). -->
+  <script>
+    (function () {
+      if (window.rkCtaInit) return; window.rkCtaInit = 1;
+      function ev(n, p) { if (window.gtag) gtag('event', n, p || {}); }
+      function locOf(el) {
+        var s = el.closest('section,header,nav,footer,form');
+        if (s && s.id) return s.id;
+        if (s) { var h = s.querySelector('h1,h2,h3,h4'); if (h) return (h.innerText || '').replace(/\s+/g, ' ').trim().slice(0, 40); }
+        return el.closest('nav') ? 'nav' : (el.closest('footer') ? 'footer' : '(page)');
+      }
+      function depth() {
+        var h = document.documentElement, sc = h.scrollHeight - h.clientHeight;
+        return sc > 0 ? Math.round(window.scrollY / sc * 100) : 0;
+      }
+      document.addEventListener('click', function (e) {
+        var el = e.target.closest && e.target.closest('a,button'); if (!el) return;
+        var h = el.getAttribute('href') || '';
+        var txt = el.getAttribute('data-cta') || (el.innerText || el.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 60);
+        ev('cta_click', { cta_text: txt || '(no text)', cta_location: locOf(el), link_url: h, scroll_pct: depth() });
+      }, true);
+      document.addEventListener('change', function (e) {
+        var el = e.target; if (!el || el.type !== 'checkbox' || !el.checked) return;
+        var loc = el.getAttribute('data-cat') ? ('Goal: ' + el.getAttribute('data-cat')) : 'Selection';
+        ev('cta_click', { cta_text: (el.value || '(choice)').slice(0, 100), cta_location: loc, link_url: '', scroll_pct: depth() });
+      }, true);
+    })();
+  </script>

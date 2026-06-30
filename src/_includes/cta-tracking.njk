@@ -27,5 +27,11 @@
         var loc = el.getAttribute('data-cat') ? ('Goal: ' + el.getAttribute('data-cat')) : 'Selection';
         ev('cta_click', { cta_text: (el.value || '(choice)').slice(0, 100), cta_location: loc, link_url: '', scroll_pct: depth() });
       }, true);
+      // Scroll-depth milestones (25/50/75/100) — granular scroll-depth for the Traffic tab.
+      var _sf = {};
+      window.addEventListener('scroll', function () {
+        var p = depth();
+        [25, 50, 75, 100].forEach(function (m) { if (p >= m && !_sf[m]) { _sf[m] = 1; ev('scroll_' + m, { percent_scrolled: m }); } });
+      }, { passive: true });
     })();
   </script>

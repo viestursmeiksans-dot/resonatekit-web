@@ -33,6 +33,17 @@
     "@context": "https://schema.org",
     "@graph": [
       {
+        "@type": "Course",
+        "name": "Public Speaking & Communication Coaching",
+        "description": "One-to-one public speaking and communication coaching for individuals and teams — online or in person.",
+        "provider": { "@type": "Organization", "name": "ResonateKit", "url": "https://resonatekit.com/" },
+        "hasCourseInstance": {
+          "@type": "CourseInstance",
+          "courseMode": ["online", "onsite"],
+          "instructor": { "@type": "Person", "name": "Viesturs Meikšāns" }
+        }
+      },
+      {
         "@type": "EducationalOrganization",
         "@id": "https://resonatekit.com/#org",
         "name": "ResonateKit",

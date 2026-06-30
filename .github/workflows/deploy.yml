@@ -23,7 +23,7 @@ jobs:
         with:
           node-version: 20
       # Build the Eleventy site: src/ -> _site/  (output is what Pages serves now).
-      - run: npm ci && npx @11ty/eleventy
+      - run: npm ci && npm run build
       - name: Publish to Cloudflare Pages (Direct Upload)
         uses: cloudflare/wrangler-action@v3
         with:

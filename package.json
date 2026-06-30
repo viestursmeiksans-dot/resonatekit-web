@@ -2,12 +2,13 @@
   "name": "resonatekit-web",
   "version": "1.0.0",
   "private": true,
-  "description": "resonatekit.com — Eleventy static site (labot.lv structured-source architecture)",
+  "description": "resonatekit.com \u2014 Eleventy static site (labot.lv structured-source architecture)",
   "scripts": {
-    "build": "eleventy",
+    "build": "tailwindcss -i ./tailwind.css -o ./src/static/css/tw.css --minify && eleventy",
     "serve": "eleventy --serve"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^3.0.0"
+    "@11ty/eleventy": "^3.0.0",
+    "tailwindcss": "^3.4.19"
   }
 }

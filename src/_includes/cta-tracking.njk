@@ -19,11 +19,18 @@
       document.addEventListener('click', function (e) {
         var el = e.target.closest && e.target.closest('a,button'); if (!el) return;
         var h = el.getAttribute('href') || '';
+        var loc = locOf(el);
         var txt = el.getAttribute('data-cta') || (el.innerText || el.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 60);
-        ev('cta_click', { cta_text: txt || '(no text)', cta_location: locOf(el), link_url: h, scroll_pct: depth() });
+        // Per-goal attribution: the contact/quote modals are SHARED across goals, so stamp the last
+        // selected goal onto the Send so each goal's funnel collects distinct numbers.
+        if (/^(send|send message|send request)/i.test(txt) && /ask-form|corp-form|quote-summary/i.test(loc) && window.rkLastGoal) {
+          txt = txt + ' · ' + window.rkLastGoal;
+        }
+        ev('cta_click', { cta_text: txt || '(no text)', cta_location: loc, link_url: h, scroll_pct: depth() });
       }, true);
       document.addEventListener('change', function (e) {
         var el = e.target; if (!el || el.type !== 'checkbox' || !el.checked) return;
+        if (el.value) window.rkLastGoal = el.value.replace(/\s+/g, ' ').trim().slice(0, 50); // remember active goal for Send attribution
         var loc = el.getAttribute('data-cat') ? ('Goal: ' + el.getAttribute('data-cat')) : 'Selection';
         ev('cta_click', { cta_text: (el.value || '(choice)').slice(0, 100), cta_location: loc, link_url: '', scroll_pct: depth() });
       }, true);

@@ -388,9 +388,25 @@
 
   <!-- ══════════════════════ HERO (video banner) ══════════════════════ -->
   <section class="hero-bg relative w-full h-[92vh] min-h-[560px] flex flex-col justify-end pt-16 overflow-hidden">
-    <video class="hero-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
-      <source src="https://cdn.shopify.com/videos/c/o/v/b0facca2fd6b4161b39de3b6cdfffe54.mp4" type="video/mp4" />
+    <video class="hero-video" muted loop playsinline preload="none" poster="https://cdn.shopify.com/s/files/1/0303/7134/8525/files/hero-new1.jpg?width=1280" aria-hidden="true">
+      <source data-src="https://cdn.shopify.com/videos/c/o/v/b0facca2fd6b4161b39de3b6cdfffe54.mp4" type="video/mp4" />
     </video>
+    <script>
+      (function(){
+        function loadHeroVideo(){
+          var v=document.querySelector('.hero-video');
+          if(!v||v.dataset.loaded)return;
+          var s=v.querySelector('source[data-src]'); if(!s)return;
+          v.dataset.loaded='1'; s.src=s.dataset.src; v.load();
+          var p=v.play(); if(p&&p.catch)p.catch(function(){});
+        }
+        /* Mobile keeps the static poster (LCP paints instantly, no video download); desktop loads the video after idle. */
+        if(window.matchMedia&&window.matchMedia('(min-width:768px)').matches){
+          var run=function(){(window.requestIdleCallback||function(f){setTimeout(f,1200);})(loadHeroVideo);};
+          if(document.readyState==='complete')run(); else window.addEventListener('load',run);
+        }
+      })();
+    </script>
     <div class="hero-overlay absolute inset-0"></div>
 
     <div class="relative z-10 px-6 md:px-12 pb-3 md:pb-10">

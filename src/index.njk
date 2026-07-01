@@ -99,8 +99,6 @@
     }
 
     .hero-video {
-      position: absolute;
-      inset: 0;
       width: 100%; height: 100%;
       object-fit: cover;
       pointer-events: none;
@@ -388,11 +386,47 @@
   <!-- ══════════════════════ NAV ══════════════════════ -->
   {% include "nav.njk" %}
 
-  <!-- ══════════════════════ HERO (video banner) ══════════════════════ -->
-  <section class="hero-bg relative w-full h-[92vh] min-h-[560px] flex flex-col justify-end pt-16 overflow-hidden">
-    <video class="hero-video" muted loop playsinline preload="none" poster="https://cdn.shopify.com/s/files/1/0303/7134/8525/files/hero-new1.jpg?width=1280" aria-hidden="true">
-      <source data-src="https://cdn.shopify.com/videos/c/o/v/b0facca2fd6b4161b39de3b6cdfffe54.mp4" type="video/mp4" />
-    </video>
+  <!-- ══════════════════════ HERO (split — text left, video right) ══════════════════════ -->
+  <section id="top" class="relative overflow-hidden bg-[#f5f0eb] pt-28 md:pt-32 pb-14 md:pb-20 px-6 md:px-12">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-12 gap-10 md:gap-14 items-center">
+
+        <!-- VIDEO — right on desktop, first on mobile -->
+        <div class="md:col-span-5 order-1 md:order-2">
+          <div class="relative">
+            <div class="aspect-[4/5] rounded-[2rem] overflow-hidden bg-[#0a0a0a] shadow-[0_30px_60px_-20px_rgba(61,45,94,.35)]">
+              <video class="hero-video" muted loop playsinline preload="none" poster="https://cdn.shopify.com/s/files/1/0303/7134/8525/files/hero-new1.jpg?width=1280" aria-hidden="true">
+                <source data-src="https://cdn.shopify.com/videos/c/o/v/b0facca2fd6b4161b39de3b6cdfffe54.mp4" type="video/mp4" />
+              </video>
+            </div>
+            <div class="absolute -top-4 -right-3 md:-right-5 bg-[#E07B6A] text-white rounded-full w-24 h-24 flex items-center justify-center font-serif text-sm leading-tight text-center rotate-[8deg] shadow-lg">
+              Limited<br/>slots<br/>monthly
+            </div>
+          </div>
+        </div>
+
+        <!-- TEXT — left -->
+        <div class="md:col-span-7 order-2 md:order-1">
+          <p class="text-[11px] font-semibold tracking-widest uppercase text-neutral-500 mb-5">Coaching by award-winning director Viesturs Meikšāns</p>
+          <h1 class="font-serif text-neutral-900 leading-[1.03] mb-6"
+              style="font-size: clamp(2.4rem, 6vw, 5rem); letter-spacing: -0.02em;">
+            Speak with confidence in front of <em style="color:#E07B6A;">anyone</em><br /><span class="text-neutral-500">— coached by the director who's trained 15,000+ people to present</span>
+          </h1>
+          <p class="text-neutral-600 text-base md:text-lg max-w-2xl leading-relaxed">
+            Practise every element that matters — from non-verbal communication and structure to storytelling and controlling your nerves — with personal, precise feedback on what's holding you back. Built for professionals and non-native English speakers who want to present with authority.
+          </p>
+          <div class="mt-8 flex flex-wrap items-center gap-3">
+            <a href="#izveles"
+              class="hero-cta inline-flex items-center justify-center px-10 py-3.5 rounded-xl border border-black text-black text-sm font-bold tracking-widest uppercase transition-colors duration-200"
+              style="background:#8AE14A;">
+              Get ready for your speech
+            </a>
+          </div>
+          <p class="mt-5 text-neutral-500 text-xs md:text-sm">I take a limited number of 1:1 clients each month — request early to hold a slot.</p>
+        </div>
+
+      </div>
+    </div>
     <script>
       (function(){
         function loadHeroVideo(){
@@ -409,34 +443,6 @@
         }
       })();
     </script>
-    <div class="hero-overlay absolute inset-0"></div>
-
-    <div class="relative z-10 px-6 md:px-12 pb-3 md:pb-10">
-      <div class="max-w-4xl">
-        <p class="hidden md:block text-[11px] font-semibold tracking-widest uppercase text-white/80 mb-5">Coaching by award-winning director Viesturs Meikšāns</p>
-        <h1 class="font-serif text-white leading-none mb-0 md:mb-6"
-            style="font-size: clamp(2.4rem, 7vw, 6rem); letter-spacing: -0.02em;">
-          Speak with confidence in front of <em style="color:#E07B6A;">anyone</em><br /><span class="text-white/80">— coached by the director who's trained 15,000+ people to present</span>
-        </h1>
-        <p class="hidden md:block text-white/85 text-base md:text-lg max-w-2xl leading-relaxed">
-          Practise every element that matters — from non-verbal communication and structure to storytelling and controlling your nerves — with personal, precise feedback on what's holding you back. Built for professionals and non-native English speakers who want to present with authority.
-        </p>
-      </div>
-    </div>
-
-    <div class="relative z-20 flex flex-wrap items-center gap-3 mx-6 md:mx-12 mb-8">
-      <a href="#izveles"
-        class="hero-cta inline-flex items-center justify-center px-10 py-3.5 rounded-xl border border-black text-black text-sm font-bold tracking-widest uppercase transition-colors duration-200"
-        style="background:#8AE14A;">
-        Explore all programs
-      </a>
-      <a href="tel:+37127337711"
-        class="hero-cta inline-flex items-center justify-center gap-1.5 md:gap-2 px-3 md:px-8 py-2 md:py-3.5 rounded-xl border border-black text-black text-[10px] md:text-sm font-bold tracking-wider md:tracking-widest uppercase transition-colors duration-200 bg-white hover:bg-neutral-100">
-        <svg class="w-3.5 h-3.5 md:w-4 md:h-4" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" /></svg>
-        Call now
-      </a>
-    </div>
-    <p class="relative z-20 mx-6 md:mx-12 mb-6 text-white/75 text-xs md:text-sm">I take a limited number of 1:1 clients each month — request early to hold a slot.</p>
   </section>
 
   <!-- ══════════════════════ PROOF BAR ══════════════════════ -->
